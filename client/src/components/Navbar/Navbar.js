@@ -8,6 +8,8 @@ import {useEffect} from "react";
 import {useSelector} from "react-redux";
 import {setCurrentUser} from "../../actions/currentUser.js";
 import profile from '../../assets/profile.png'
+import '../NewsItem.js'
+
 const Navbar = () => {
     // const dispatch=useDispatch()
     const User = null;//useSelector((state) => (state.currentUserReducer));
@@ -15,6 +17,7 @@ const Navbar = () => {
     // useEffect(()=>{
     //     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
     // },[dispatch])
+
 
     return (
         <>
@@ -51,13 +54,13 @@ const Navbar = () => {
             </li>
             <li>
                 <form>
-                <input type={"text"} placeholder={'Search...'}/>
+                <input type={"text"} placeholder={'Search...'} id={"searchbar"}/>
                 <img src={search} alt={"search"} height={'20px'} className={'search-icon'}/>
             </form>
             </li>
             <li>
                 { User === null ?
-                <Link to={'/Auth'} className='nav-item nav-links'> Log In </Link> :
+                <Link to={'/Login'} className='nav-item nav-links'> Log In </Link> :
                 <>
                     <img src={profile} />
                     <button className={'nav-item nav-links'}>

@@ -1,7 +1,8 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
 import News from "./components/News";
-import Auth from "./pages/Auth/Auth";
+import Login from "../src/components/Login/index"
+import Signup from "./components/Singup";
 export const AllRoutes=()=>{
     return(
         <Routes>
@@ -27,7 +28,8 @@ export const AllRoutes=()=>{
             <Route exact path="/technology" element={ <News key="technology" pageSize={8} catagory="technology"/>}>
 
             </Route>
-                <Route path='/Auth' element={<Auth />}/>
+                <Route path='/signup' element={<Signup />}/>
+            <Route path='/login' element={<Login />}/>
         </Routes>
     )
 }

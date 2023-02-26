@@ -1,22 +1,21 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import cors from 'cors'
-import userRoutes from './routes/users.js'
+require("dotenv").config();
+const express = require("express");
 const app = express();
-app.use(express.json({limit: "30mb",extended: true}))
-app.use(express.urlencoded({limit:"30mb",extended:true}))
+const cors = require("cors");
+const connection = require("./db");
+const userRoutes = require("./routes/users");
+const authRoutes = require("./routes/auth");
+
+// database connection
+connection();
+
+// middlewares
+app.use(express.json());
 app.use(cors());
-app.get('/',(req,res) => {
-    res.send("this is server side")
-})
 
-mongoose.set('strictQuery',true);
+// routes
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
-app.use('/user',userRoutes)
-
-const PORT= process.env.PORT || 5000
-const CONNECTION_URL= "mongodb+srv://ash:ash@vamm.uxgwuy4.mongodb.net/?retryWrites=true&w=majority"
-mongoose.connect( CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
-    .then(() => app.listen(PORT,()=>{console.log(`server running on port ${PORT}`)}))
-    .catch((err) => console.log(err.message))
-
+const port = process.env.PORT || 8080;
+app.listen(port, console.log(`Listening on port ${port}...`));

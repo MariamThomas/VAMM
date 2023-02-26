@@ -11,7 +11,7 @@ const Auth = () =>{
     const [name,setName]=useState('')
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
-    // const dispatch =useDispatch()
+    //const dispatch =useDispatch()
     const navigate=useNavigate()
     const Handleswitch = () => {
         setIsSignup(!isSignup)
@@ -25,9 +25,9 @@ const Auth = () =>{
             if(!name){
                 alert("Enter a name to continue")
             }
-            // dispatch(signup({name,email,password},navigate))
+            //dispatch(signup({name, email, password },navigate))
         }else{
-            // dispatch(login({email,password},navigate))
+            //dispatch(login({email, password },navigate))
         }
         console.log({name,email,password})
     }
