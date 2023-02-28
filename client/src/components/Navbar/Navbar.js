@@ -9,10 +9,10 @@ import {useSelector} from "react-redux";
 import {setCurrentUser} from "../../actions/currentUser.js";
 import profile from '../../assets/profile.png'
 import '../NewsItem.js'
-
+import setData from  '../Login/index.jsx'
 const Navbar = () => {
     // const dispatch=useDispatch()
-    const User = null;//useSelector((state) => (state.currentUserReducer));
+    const data = setData();//const User = null;//useSelector((state) => (state.currentUserReducer));
     const [show, setShow] = useState(false)
     // useEffect(()=>{
     //     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
@@ -59,14 +59,18 @@ const Navbar = () => {
             </form>
             </li>
             <li>
-                { User === null ?
-                <Link to={'/Login'} className='nav-item nav-links'> Log In </Link> :
-                <>
-                    <img src={profile} />
-                    <button className={'nav-item nav-links'}>
-                        Logout
-                    </button>
-                </> }
+               if (data==1) {
+                <Link to={'/Main'} className={'nav-item nav-links'}>
+                Logout
+              </Link>}
+               
+              else{
+                 
+               
+                <Link to={'/Login'} className='nav-item nav-links'> Log In</Link>
+                    
+                    
+              }
             </li>
         </ul>
         </div>
